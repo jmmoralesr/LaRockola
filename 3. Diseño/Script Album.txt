@@ -1,0 +1,6 @@
+INSERT INTO `mydb`.`album` (`idAlbum`, `nombre`, `selloDisco`, `agno`) VALUES ('1', 'FooFighters', 'Roswell Records', '1996');
+INSERT INTO `mydb`.`album` (`idAlbum`, `nombre`, `selloDisco`, `agno`) VALUES ('2', 'The Colour and the Shape', 'Roswell Records', '1997');
+INSERT INTO `mydb`.`album` (`idAlbum`, `nombre`, `selloDisco`, `agno`) VALUES ('3', 'There is Nothing Left to Lose', 'BMG', '1999');
+INSERT INTO `mydb`.`album` (`idAlbum`, `nombre`, `selloDisco`, `agno`) VALUES ('4', 'Kill em all', 'Megaforce', '1983');
+INSERT INTO `mydb`.`album` (`idAlbum`, `nombre`, `selloDisco`, `agno`) VALUES ('5', 'Ride the Lightning', 'Megaforce', '1984');
+INSERT INTO `mydb`.`album` (`idAlbum`, `nombre`, `selloDisco`, `agno`) VALUES ('6', 'Master of Puppets', 'Elektra', '1986');

@@ -1,0 +1,2 @@
+INSERT INTO `mydb`.`artistas` (`idArtistas`, `nombre`, `nacionalidad`) VALUES ('1', 'Foo Fighters', 'USA');
+INSERT INTO `mydb`.`artistas` (`idArtistas`, `nombre`, `nacionalidad`) VALUES ('2', 'Metallica', 'USA');

@@ -1,0 +1,18 @@
+INSERT INTO `mydb`.`canciones` (`idCanciones`, `titulo`, `agno`, `idArtista`, `idAlbum`, `idGenero`) VALUES ('1', 'This is a Call', '1995', '1', '1', '1');
+INSERT INTO `mydb`.`canciones` (`idCanciones`, `titulo`, `agno`, `idArtista`, `idAlbum`, `idGenero`) VALUES ('2', 'Big Me', '1995', '1', '1', '1');
+INSERT INTO `mydb`.`canciones` (`idCanciones`, `titulo`, `agno`, `idArtista`, `idAlbum`, `idGenero`) VALUES ('3', 'For All The Cows', '1995', '1', '1', '1');
+INSERT INTO `mydb`.`canciones` (`idCanciones`, `titulo`, `agno`, `idArtista`, `idAlbum`, `idGenero`) VALUES ('4', 'Monkey Wrench', '1997', '1', '2', '1');
+INSERT INTO `mydb`.`canciones` (`idCanciones`, `titulo`, `agno`, `idArtista`, `idAlbum`, `idGenero`) VALUES ('5', 'My Hero', '1997', '1', '2', '1');
+INSERT INTO `mydb`.`canciones` (`idCanciones`, `titulo`, `agno`, `idArtista`, `idAlbum`, `idGenero`) VALUES ('6', 'Everlong', '1997', '1', '2', '1');
+INSERT INTO `mydb`.`canciones` (`idCanciones`, `titulo`, `agno`, `idArtista`, `idAlbum`, `idGenero`) VALUES ('7', 'Stacked Actors', '1999', '1', '3', '1');
+INSERT INTO `mydb`.`canciones` (`idCanciones`, `titulo`, `agno`, `idArtista`, `idAlbum`, `idGenero`) VALUES ('8', 'Aurora', '1999', '1', '3', '1');
+INSERT INTO `mydb`.`canciones` (`idCanciones`, `titulo`, `agno`, `idArtista`, `idAlbum`, `idGenero`) VALUES ('9', 'Learn to Fly', '1999', '1', '3', '1');
+INSERT INTO `mydb`.`canciones` (`idCanciones`, `titulo`, `agno`, `idArtista`, `idAlbum`, `idGenero`) VALUES ('10', 'Seek and Destroy', '1983', '2', '1', '2');
+INSERT INTO `mydb`.`canciones` (`idCanciones`, `titulo`, `agno`, `idArtista`, `idAlbum`, `idGenero`) VALUES ('11', 'Jump in the Fire', '1983', '2', '1', '2');
+INSERT INTO `mydb`.`canciones` (`idCanciones`, `titulo`, `agno`, `idArtista`, `idAlbum`, `idGenero`) VALUES ('12', 'The Four Horsemen', '1983', '2', '1', '2');
+INSERT INTO `mydb`.`canciones` (`idCanciones`, `titulo`, `agno`, `idArtista`, `idAlbum`, `idGenero`) VALUES ('13', 'The Call of Ktulu', '1984', '2', '2', '2');
+INSERT INTO `mydb`.`canciones` (`idCanciones`, `titulo`, `agno`, `idArtista`, `idAlbum`, `idGenero`) VALUES ('14', 'Fade to Black', '1984', '2', '2', '2');
+INSERT INTO `mydb`.`canciones` (`idCanciones`, `titulo`, `agno`, `idArtista`, `idAlbum`, `idGenero`) VALUES ('15', 'Creeping Death', '1984', '2', '2', '2');
+INSERT INTO `mydb`.`canciones` (`idCanciones`, `titulo`, `agno`, `idArtista`, `idAlbum`, `idGenero`) VALUES ('16', 'Master of Puppets', '1986', '2', '3', '2');
+INSERT INTO `mydb`.`canciones` (`idCanciones`, `titulo`, `agno`, `idArtista`, `idAlbum`, `idGenero`) VALUES ('17', 'Orion', '1986', '2', '3', '2');
+INSERT INTO `mydb`.`canciones` (`idCanciones`, `titulo`, `agno`, `idArtista`, `idAlbum`, `idGenero`) VALUES ('18', 'Battery', '1986', '2', '3', '2');

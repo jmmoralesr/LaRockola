@@ -1,0 +1,2 @@
+INSERT INTO `mydb`.`genero` (`idGenero`, `nombre`) VALUES ('1', 'Post Grunge');
+INSERT INTO `mydb`.`genero` (`idGenero`, `nombre`) VALUES ('2', 'Trash Metal');
