@@ -124,6 +124,24 @@ public class ConexionDB {
         }
     }
     
+    public ResultSet consultarVista (String nombreTabla){        
+        String query = "SELECT * FROM vista" + nombreTabla;        
+        try {
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+            rs = stmt.executeQuery(query);
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        } catch (RuntimeException ex) {
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        } catch (Exception ex) {
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
     public void insertar(String query){
         //String query = "SELECT * FROM " + nombreTabla;        
         try {
@@ -139,6 +157,69 @@ public class ConexionDB {
         } catch (Exception ex) {
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             
+        }
+    }
+    
+    public boolean actualizar(String nombreTabla, String [] columnas, String [] valores, int id){
+        StringBuilder query = new StringBuilder("UPDATE ");
+        query.append(nombreTabla);
+        query.append(" SET ");
+        for (int i = 0; i < columnas.length; i++){
+            query.append(columnas[i]);
+            query.append(" = '");
+            query.append(valores[i]);
+            query.append("'");
+            if(i < columnas.length )
+                query.append(", ");
+        }
+        query.append(" WHERE id");
+        query.append(nombreTabla);
+        query.append(" = ");
+        query.append(id);
+        for (int i = 0; i < valores.length ; i++){
+            query.append("'");
+            query.append(valores[i]);
+            query.append("'");
+            if (i < valores.length )
+                query.append(",");
+        }
+        query.append(")");
+        try {
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query.toString());
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        } catch (RuntimeException ex) {
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        } catch (Exception ex) {
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
+    public boolean borrar(String nombreTabla, int id){
+        StringBuilder query = new StringBuilder("DELETE FROM ");
+        query.append(nombreTabla);
+        query.append(" WHERE id");
+        query.append(nombreTabla);
+        query.append(" = ");
+        query.append(id);
+        try {
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query.toString());
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        } catch (RuntimeException ex) {
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        } catch (Exception ex) {
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
     }
 }
