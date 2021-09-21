@@ -53,7 +53,7 @@ public class DAOArtistas {
             }
             return artistas;
         } catch (SQLException ex) {
-            Logger.getLogger(DAOAlbum.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAOArtistas.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

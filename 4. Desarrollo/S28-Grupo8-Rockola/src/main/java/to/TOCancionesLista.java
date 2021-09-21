@@ -5,6 +5,8 @@
  */
 package to;
 
+import java.util.Date;
+
 /**
  *
  * @author Carlos
@@ -19,7 +21,7 @@ public class TOCancionesLista {
     private String rolUsuario;
     private String nombres;
     private String email;
-    private int fechaUltimaReproduccion;
+    private Date fechaUltimaReproduccion;
     
     
     private int idCanciones;
