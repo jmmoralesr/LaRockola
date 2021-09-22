@@ -25,12 +25,12 @@ public class DAOArtistas {
     public DAOArtistas() {
     }
     
-    public int insertarAlbum(TOArtistas ToArtistas){
+    public int insertarArtistas(TOArtistas ToArtistas){
         String [] valores = {String.valueOf(ToArtistas.getIdArtistas()),ToArtistas.getNombreArtistas(),ToArtistas.getNacionalidadArtistas()};
         return con.insertar(nombreTabla, columnas, valores);
     }
     
-    public boolean actualizarAlbum(TOArtistas ToArtistas){
+    public boolean actualizarArtistas(TOArtistas ToArtistas){
         String [] valores = {String.valueOf(ToArtistas.getIdArtistas()),ToArtistas.getNombreArtistas(),ToArtistas.getNacionalidadArtistas()};
         return con.actualizar(nombreTabla, columnas, valores, ToArtistas.getIdArtistas());
     }
