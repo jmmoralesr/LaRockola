@@ -20,13 +20,13 @@ import to.TOAlbum;
 public class DAOAlbum {
     private final ConexionDB con = new ConexionDB();
     private String nombreTabla = "album";
-    private String [] columnas = {"idAlbum","nombreAlbum","selloDisco","agnoAlbum"};
+    private String [] columnas = {"nombreAlbum","selloDisco","agnoAlbum"};
 
     public DAOAlbum() {
     }
     
     public int insertarAlbum(TOAlbum ToAlbum){
-        String [] valores = {String.valueOf(ToAlbum.getIdAlbum()),ToAlbum.getNombreAlbum(),ToAlbum.getSelloDisco(), ToAlbum.getAgnoAlbum()};
+        String [] valores = {ToAlbum.getNombreAlbum(),ToAlbum.getSelloDisco(), ToAlbum.getAgnoAlbum()};
         return con.insertar(nombreTabla, columnas, valores);
     }
     

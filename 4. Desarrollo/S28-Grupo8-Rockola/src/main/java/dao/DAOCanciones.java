@@ -27,7 +27,7 @@ public class DAOCanciones {
     }
     
     public int insertarCanciones(TOCanciones ToCanciones){
-        String [] valores = {String.valueOf(ToCanciones.getIdCanciones()),ToCanciones.getTituloCanciones(),ToCanciones.getAgnoCanciones(),String.valueOf(ToCanciones.getIdArtistas()),String.valueOf(ToCanciones.getIdAlbum()),String.valueOf(ToCanciones.getIdGenero())};
+        String [] valores = {ToCanciones.getTituloCanciones(),ToCanciones.getAgnoCanciones(),String.valueOf(ToCanciones.getIdArtistas()),String.valueOf(ToCanciones.getIdAlbum()),String.valueOf(ToCanciones.getIdGenero())};
         return con.insertar(nombreTabla, columnas, valores);
     }
     

@@ -20,13 +20,13 @@ import to.TOArtistas;
 public class DAOArtistas {
     private final ConexionDB con = new ConexionDB();
     private String nombreTabla = "artistas";
-    private String [] columnas = {"idArtistas","nombreArtistas","nacionalidadArtistas"};
+    private String [] columnas = {"nombreArtistas","nacionalidadArtistas"};
 
     public DAOArtistas() {
     }
     
     public int insertarArtistas(TOArtistas ToArtistas){
-        String [] valores = {String.valueOf(ToArtistas.getIdArtistas()),ToArtistas.getNombreArtistas(),ToArtistas.getNacionalidadArtistas()};
+        String [] valores = {ToArtistas.getNombreArtistas(),ToArtistas.getNacionalidadArtistas()};
         return con.insertar(nombreTabla, columnas, valores);
     }
     

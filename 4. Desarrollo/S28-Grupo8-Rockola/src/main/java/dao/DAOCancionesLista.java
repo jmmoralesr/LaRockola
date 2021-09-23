@@ -27,7 +27,7 @@ public class DAOCancionesLista {
     }
     
     public int insertarCancionesLista(TOCancionesLista ToCancionesLista){
-        String [] valores = {String.valueOf(ToCancionesLista.getIdCancionesLista()),String.valueOf(ToCancionesLista.getIdListaReproduccion()),String.valueOf(ToCancionesLista.getIdCanciones()),String.valueOf(ToCancionesLista.getFavoritaCancion())};
+        String [] valores = {String.valueOf(ToCancionesLista.getIdListaReproduccion()),String.valueOf(ToCancionesLista.getIdCanciones()),String.valueOf(ToCancionesLista.getFavoritaCancion())};
         return con.insertar(nombreTabla, columnas, valores);
     }
     
