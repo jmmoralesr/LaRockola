@@ -47,9 +47,9 @@ public class DAOCanciones {
             ResultSet rs = con.consultarVista(nombreVista);
             while(rs.next()){
                 cancion = new TOCanciones();
-                cancion.setIdArtistas(rs.getInt("idCanciones"));
-                cancion.setNombreArtistas(rs.getString("tituloCanciones"));
-                cancion.setNacionalidadArtistas("agnoCanciones");
+                cancion.setIdCanciones(rs.getInt("idCanciones"));
+                cancion.setTituloCanciones(rs.getString("tituloCanciones"));
+                cancion.setAgnoCanciones("agnoCanciones");
                 cancion.setIdArtistas(rs.getInt("idArtistas"));
                 cancion.setNombreArtistas(rs.getString("nombreArtistas"));
                 cancion.setNacionalidadArtistas(rs.getString("nacionalidadArtistas"));

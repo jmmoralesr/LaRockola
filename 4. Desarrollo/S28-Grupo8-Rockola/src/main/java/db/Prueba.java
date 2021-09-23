@@ -5,6 +5,8 @@
  */
 package db;
 
+import com.google.gson.Gson;
+
 /**
  *
  * @author Carlos
@@ -12,7 +14,7 @@ package db;
 public class Prueba {
     public static void main(String []args){
         ConexionDB con = new ConexionDB();
-        
+        Gson g = new Gson();
     }
             
             

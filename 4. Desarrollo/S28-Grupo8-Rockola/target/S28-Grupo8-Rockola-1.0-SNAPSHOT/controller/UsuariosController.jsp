@@ -5,24 +5,21 @@
 --%>
 <%@page import="to.TOUsuario"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="com.google.gson.Gson"%>
 <%@page import = "controller.ControllerUsuarios"%>
 <% ControllerUsuarios controladorUsuarios = new ControllerUsuarios();
 String opcion = request.getParameter("opcion");
-switch(opcion){
-    case "listar":
-        ArrayList<TOUsuario> usuarios = controladorUsuarios.listarUsuarios(); 
-        break;
-    case "insertar":
-        
-        break;
-    case "actualizar":
-        
-        break;
-    case "eliminar":
-        
-        break;
-    default:
-        System.out.println("Opcion no disponible");
+if("listar".equals(opcion)){
+    ArrayList<TOUsuario> usuarios = controladorUsuarios.listarUsuarios(); 
+    out.print(new Gson().toJson(usuarios));
+}else if("insertar".equals(opcion)){
+    out.println("Opcion Insertar UsuariosController");
+}else if("actualizar".equals(opcion)){
+    out.println("Opcion Actualizar UsuariosController");
+}else if("eliminar".equals(opcion)){
+    out.println("Opcion Eliminar UsuariosController");
+}else{
+    out.println("Opcion no disponible UsuariosController");
 }
 
 %>
@@ -34,6 +31,6 @@ switch(opcion){
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>UsuarioController</h1>
     </body>
 </html>

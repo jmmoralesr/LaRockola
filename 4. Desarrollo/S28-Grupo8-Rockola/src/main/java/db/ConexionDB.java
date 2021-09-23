@@ -125,7 +125,7 @@ public class ConexionDB {
     }
 
     public ResultSet consultarVista(String nombreTabla) {
-        String query = "SELECT * FROM vista" + nombreTabla;
+        String query = "SELECT * FROM " + nombreTabla;
         try {
             stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             rs = stmt.executeQuery(query);

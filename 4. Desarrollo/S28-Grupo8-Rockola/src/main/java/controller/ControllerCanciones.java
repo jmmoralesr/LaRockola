@@ -15,6 +15,11 @@ import to.TOCanciones;
  */
 public class ControllerCanciones {
     DAOCanciones CancionesDAO = new DAOCanciones();
+
+    public ControllerCanciones() {
+    }
+    
+    
     
     public int insertarUsuario(TOCanciones ToCanciones){
         return CancionesDAO.insertarCanciones(ToCanciones);

@@ -15,6 +15,9 @@ import to.TOUsuario;
  */
 public class ControllerUsuarios {
     DAOUsuario usuarioDAO = new DAOUsuario();
+
+    public ControllerUsuarios() {
+    }
     
     public int insertarUsuario(TOUsuario ToUsuario){
         return usuarioDAO.insertarUsuario(ToUsuario);
