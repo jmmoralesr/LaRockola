@@ -29,7 +29,7 @@ if("listar".equals(opcion)){
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>CancionesController</title>
     </head>
     <body>
         <h1>CancionesController</h1>
