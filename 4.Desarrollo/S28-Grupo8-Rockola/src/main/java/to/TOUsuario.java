@@ -78,4 +78,10 @@ public class TOUsuario {
         this.email = email;
     }
 
+    @Override
+    public String toString() {
+        return "TOUsuario{" + "idUsuario=" + idUsuario + ", usuario=" + usuario + ", clave=" + clave + ", rolUsuario=" + rolUsuario + ", nombres=" + nombres + ", email=" + email + '}';
+    }
+
+    
 }

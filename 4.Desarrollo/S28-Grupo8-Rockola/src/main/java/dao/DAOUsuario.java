@@ -20,13 +20,13 @@ import to.TOUsuario;
 public class DAOUsuario {
     private final ConexionDB con = new ConexionDB();
     private String nombreTabla = "usuario";
-    private String [] columnas = {"idUsuario","usuario","clave","rolUsuario","nombres","email"};
+    private String [] columnas = {"usuario","clave","rolUsuario","nombres","email"};
 
     public DAOUsuario() {
     }
     
     public int insertarUsuario(TOUsuario ToUsuario){
-        String [] valores = {String.valueOf(ToUsuario.getIdUsuario()),ToUsuario.getUsuario(),ToUsuario.getClave(), ToUsuario.getRolUsuario(),ToUsuario.getNombres(),ToUsuario.getEmail()};
+        String [] valores = {ToUsuario.getUsuario(),ToUsuario.getClave(), ToUsuario.getRolUsuario(),ToUsuario.getNombres(),ToUsuario.getEmail()};
         return con.insertar(nombreTabla, columnas, valores);
     }
     
@@ -58,6 +58,31 @@ public class DAOUsuario {
         } catch (SQLException ex) {
             Logger.getLogger(DAOUsuario.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        }
+    }
+    
+    public TOUsuario verificarUsuario(String usuario, String clave){
+        String condicion = " usuario = '" + usuario + "' and clave = '" + clave + "';" ;
+        TOUsuario usuarioTO = new TOUsuario();
+        try {
+            ResultSet rs = con.consultarWhere(nombreTabla,condicion);
+            while(rs.next()){
+                usuarioTO.setIdUsuario(rs.getInt("idUsuario"));
+                usuarioTO.setUsuario(rs.getString("usuario"));
+                usuarioTO.setClave(rs.getString("clave"));
+                usuarioTO.setRolUsuario("rolUsuario");
+                usuarioTO.setNombres(rs.getString("nombres"));                
+                usuarioTO.setEmail(rs.getString("email"));                
+            }
+            return usuarioTO;
+        } catch (SQLException ex) {
+            System.out.println("Error en DAOUsuario.verificarUsuario: " + ex.getMessage());
+            Logger.getLogger(DAOUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            return usuarioTO;
+        } catch (Exception ex) {
+            System.out.println("Error en DAOUsuario.verificarUsuario: " + ex.getMessage());
+            Logger.getLogger(DAOUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            return usuarioTO;
         }
     }
 }

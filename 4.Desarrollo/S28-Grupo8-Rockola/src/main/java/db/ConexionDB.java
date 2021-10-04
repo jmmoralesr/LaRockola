@@ -123,6 +123,24 @@ public class ConexionDB {
             return null;
         }
     }
+    
+    public ResultSet consultarWhere(String nombreTabla, String condicion) {
+        String query = "SELECT * FROM " + nombreTabla + " WHERE " + condicion;
+        try {
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rs = stmt.executeQuery(query);
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        } catch (RuntimeException ex) {
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        } catch (Exception ex) {
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 
     public ResultSet consultarVista(String nombreTabla) {
         String query = "SELECT * FROM " + nombreTabla;
@@ -144,12 +162,13 @@ public class ConexionDB {
 
     public int insertar(String nombreTabla, String[] columnas, String[] valores) {
         StringBuilder query = new StringBuilder();
+        query.append("INSERT INTO ");
         query.append(nombreTabla);
         query.append(" (");
         for (int i = 0; i < columnas.length; i++) {
             query.append(columnas[i]);
-            if (i < columnas.length) {
-                query.append(", ");
+            if (i < columnas.length - 1) {
+                query.append(",");
             }
         }
         query.append(") VALUES (");
@@ -157,15 +176,24 @@ public class ConexionDB {
             query.append("'");
             query.append(valores[i]);
             query.append("'");
-            if (i < valores.length) {
+            if (i < valores.length - 1) {
                 query.append(",");
             }
         }
         query.append(")");
+        System.out.println("ConexionDB_insertar: "+ query.toString());
         try {
             stmt = con.createStatement();
-            rs = stmt.executeQuery(query.toString());
-            return rs.getInt("id" + nombreTabla);
+            int columnasAfectadas = stmt.executeUpdate(query.toString(),Statement.RETURN_GENERATED_KEYS);
+            if (columnasAfectadas == 0){
+                throw new SQLException("No se pudo guardar el registro");
+            }
+            ResultSet idsGenerados = stmt.getGeneratedKeys();
+            if(idsGenerados.next()){
+                return idsGenerados.getInt(1);
+            }else{
+                return 0;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
@@ -187,7 +215,7 @@ public class ConexionDB {
             query.append(" = '");
             query.append(valores[i]);
             query.append("'");
-            if (i < columnas.length) {
+            if (i < columnas.length - 1) {
                 query.append(", ");
             }
         }
@@ -199,7 +227,7 @@ public class ConexionDB {
             query.append("'");
             query.append(valores[i]);
             query.append("'");
-            if (i < valores.length) {
+            if (i < valores.length - 1) {
                 query.append(",");
             }
         }

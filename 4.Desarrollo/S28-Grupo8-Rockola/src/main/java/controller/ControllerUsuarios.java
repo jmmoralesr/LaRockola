@@ -34,4 +34,8 @@ public class ControllerUsuarios {
     public ArrayList<TOUsuario> listarUsuarios(){
         return usuarioDAO.listarUsuario();
     }
+    
+    public TOUsuario verificarUsuarios(String usuario, String clave){
+        return usuarioDAO.verificarUsuario(usuario, clave);
+    }
 }

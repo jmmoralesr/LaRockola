@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
     <link href="css/style.css" rel="stylesheet">
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
 </head>
 
 <body class="h-100">
@@ -39,17 +39,17 @@
                 <div class="col-xl-6">
                     <div class="form-input-content">
                         <div class="card login-form mb-0">
-                            <div class="card-body pt-5">
+                            <div class="card-body pt-5" ng-app="login28" ng-controller="testController as tc">
                                 <a class="text-center" href="index.html"> <h4>La Rockola</h4></a>
         
                                 <form class="mt-5 mb-5 login-input">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Usuario">
+                                        <input type="text" class="form-control" placeholder="Usuario" ng-model="tc.usuario">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Contraseña">
+                                        <input type="password" class="form-control" placeholder="Clave" ng-model="tc.clave">
                                     </div>
-                                    <button class="btn login-form__btn submit w-100">Ingresar</button>
+                                    <button class="btn login-form__btn submit w-100" ng-click="tc.login()">Ingresar</button>
                                 </form>
                                 <p class="mt-5 login-form__footer">¿No tienes una cuenta? <a href="registrar.html" class="text-primary">Registrate</a> ahora</p>
                             </div>
@@ -72,6 +72,29 @@
     <script src="js/gleek.js"></script>
     <script src="js/styleSwitcher.js"></script>
 </body>
+<script>
+    var app = angular.module('login28',[]);
+    app.controller('testController',['$http',initController]);
+    function initController($http){
+        var controlador = this;
+        
+        controlador.login = function(){
+            var parametros = {opcion:"login", datos : JSON.stringify(controlador)};
+            $http({
+                method: 'POST',
+                url : 'http://localhost:8080/S28-Grupo8-Rockola/controller/UsuariosController.jsp',
+                params : parametros
+            }).then(function(res){
+                controlador.respuesta = res.data;
+                if(res.data.idUsuario == 0){
+                    alert("El usuario y/o clave utilizados son incorrectos, por favor verificar");
+                }else{
+                    window.location.href = "usuario.html";
+                }
+            });
+        };
+    }
+</script>
 </html>
 
 
