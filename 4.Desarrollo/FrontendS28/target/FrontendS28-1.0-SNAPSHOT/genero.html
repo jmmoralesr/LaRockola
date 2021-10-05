@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <!-- Custom Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
 </head>
 
 <body>
@@ -122,7 +122,7 @@
         <!--**********************************
             Content body start
         ***********************************-->
-        <div class="content-body">
+        <div class="content-body" ng-app="genero28" ng-controller="testController as tc">
 
             <div class="row page-titles mx-0">
                 <div class="col p-md-0">
@@ -145,12 +145,12 @@
                                     <form>
                                         <div class="form-group">
                                             <label>Nombre Genero</label>
-                                            <input type="text" class="form-control" placeholder="Nombre Genero">
+                                            <input type="text" class="form-control" placeholder="Nombre Genero" ng-model="tc.generoform.nombreGenero">
                                         </div>
                                         
-                                        <button type="submit" class="btn btn-dark">Guardar</button>
-                                        <button type="submit" class="btn btn-dark">Limpiar formulario</button>
-                                        <button type="submit" class="btn btn-dark">Listar</button>
+                                        <button type="submit" class="btn btn-dark" ng-click="tc.guardar()">Guardar</button>
+                                        <button type="submit" class="btn btn-dark" ng-click="tc.limpiar()">Limpiar formulario</button>
+                                        <button type="submit" class="btn btn-dark" ng-click="tc.listar()">Listar</button>
                                     </form>
                                 </div>
                             </div>
@@ -168,91 +168,16 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">Nombre</th>
+                                                <th scope="col">Editar</th>
+                                                <th scope="col">Eliminar</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Air Conditioner</td>
-                                                <td>
-                                                    <div class="progress" style="height: 10px">
-                                                        <div class="progress-bar gradient-1" style="width: 70%;" role="progressbar"><span class="sr-only">70% Complete</span>
-                                                        </div>
-                                                    </div> 
+                                            <tr ng-repeat="genero in tc.generos">
+                                                <td>{{genero.nombreGenero}}</td>
+                                                <td><span><a href="#" data-toggle="tooltip" data-placement="top" title="Editar" ng-click="tc.seleccionar(genero.idGenero)"><i class="fa fa-pencil color-muted m-r-5"></i> </a></span>
                                                 </td>
-                                                <td>Apr 20,2018</td>
-                                                <td><span class="label gradient-1 btn-rounded">70%</span>
-                                                </td>
-                                                <td><span><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Textiles</td>
-                                                <td>
-                                                    <div class="progress" style="height: 10px">
-                                                        <div class="progress-bar gradient-2" style="width: 70%;" role="progressbar"><span class="sr-only">70% Complete</span>
-                                                        </div>
-                                                    </div> 
-                                                </td>
-                                                <td>May 27,2018</td>
-                                                <td><span class="label gradient-2 btn-rounded">70%</span>
-                                                </td>
-                                                <td><span><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Milk Powder</td>
-                                                <td>
-                                                    <div class="progress" style="height: 10px">
-                                                        <div class="progress-bar gradient-3" style="width: 70%;" role="progressbar"><span class="sr-only">70% Complete</span>
-                                                        </div>
-                                                    </div> 
-                                                </td>
-                                                <td>May 18,2018</td>
-                                                <td><span class="label gradient-3 btn-rounded">70%</span>
-                                                </td>
-                                                <td><span><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Vehicles</td>
-                                                <td>
-                                                    <div class="progress" style="height: 10px">
-                                                        <div class="progress-bar gradient-4" style="width: 70%;" role="progressbar"><span class="sr-only">70% Complete</span>
-                                                        </div>
-                                                    </div> 
-                                                </td>
-                                                <td>Mar 27,2018</td>
-                                                <td><span class="label gradient-4 btn-rounded">70%</span>
-                                                </td>
-                                                <td><span><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Boats</td>
-                                                <td>
-                                                    <div class="progress" style="height: 10px">
-                                                        <div class="progress-bar gradient-9" style="width: 70%;" role="progressbar"><span class="sr-only">70% Complete</span>
-                                                        </div>
-                                                    </div> 
-                                                </td>
-                                                <td>Jun 28,2018</td>
-                                                <td><span class="label gradient-9 btn-rounded">70%</span>
-                                                </td>
-                                                <td><span><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Boats</td>
-                                                <td>
-                                                    <div class="progress" style="height: 10px">
-                                                        <div class="progress-bar gradient-2" style="width: 70%;" role="progressbar"><span class="sr-only">70% Complete</span>
-                                                        </div>
-                                                    </div> 
-                                                </td>
-                                                <td>Aug 20,2018</td>
-                                                <td><span class="label gradient-2 btn-rounded">70%</span>
-                                                </td>
-                                                <td><span><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span>
+                                                <td><span><a href="#" data-toggle="tooltip" data-placement="top" title="Eliminar" ng-click="tc.eliminar(genero.idGenero)"><i class="fa fa-close color-danger"></i></a></span>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -293,5 +218,89 @@
     <script src="js/styleSwitcher.js"></script>
 
 </body>
+
+<script>
+    var app = angular.module('genero28',[]);
+    app.controller('testController',['$http',initController]);
+    function initController($http){
+        var controlador = this;
+        
+        controlador.listar = function(){
+            var parametros = {opcion:"listar"};
+            $http({
+                method: 'POST',
+                url : 'http://localhost:8080/S28-Grupo8-Rockola/controller/GeneroController.jsp',
+                params : parametros
+            }).then(function(res){
+                controlador.generos = res.data;
+                
+            });
+        };
+        
+        controlador.guardar = function(){
+            alert(controlador.generoform.idGenero == undefined);
+            if(controlador.generoform.idGenero == undefined || controlador.generoform.idGenero === '0' || controlador.generoform.idGenero === 0){
+                alert(controlador.generoform.idGenero);
+                var parametros = {opcion: "insertar", data: JSON.stringify(controlador.generoform) };
+                //alert(JSON.stringify(controlador));
+                $http({
+                    method: 'POST',
+                    url : 'http://localhost:8080/S28-Grupo8-Rockola/controller/GeneroController.jsp',
+                    params : parametros
+                }).then(function(res){
+                    controlador.respuesta = res.data;
+                    controlador.listar();
+                    controlador.limpiar();
+                });
+            }else {
+                var parametros = {opcion: "actualizar", data: JSON.stringify(controlador.generoform) };
+                $http({
+                    method: 'POST',
+                    url : 'http://localhost:8080/S28-Grupo8-Rockola/controller/GeneroController.jsp',
+                    params : parametros
+                }).then(function(res){
+                    controlador.respuesta = res.data;
+                    controlador.listar();
+                    controlador.limpiar();
+                });
+            }
+            
+        };
+        
+        controlador.limpiar = function(){
+            controlador.generoform.nombreGenero = "";
+        };
+        
+        controlador.seleccionar = function(id){
+            for ( var i = 0; i < controlador.generos.length ; i++ ){
+                if(id == controlador.generos[i].idGenero){
+                    controlador.generoform = controlador.generos[i];
+                }
+            }
+        };       
+        
+        controlador.eliminar = function(id){
+            
+            for ( var i = 0; i < controlador.generos.length ; i++ ){
+                if(id == controlador.generos[i].idGenero){
+                    controlador.generoform = controlador.generos[i];
+                }
+            }
+            
+            var parametros = {opcion: "eliminar", data: JSON.stringify(controlador.generoform) };
+            
+            $http({
+                method: 'POST',
+                url : 'http://localhost:8080/S28-Grupo8-Rockola/controller/GeneroController.jsp',
+                params : parametros
+            }).then(function(res){
+                //controlador.respuesta = res.data;
+                controlador.listar();
+                //controlador.limpiar();
+            });
+                        
+        };
+    }
+</script>
 
 </html>

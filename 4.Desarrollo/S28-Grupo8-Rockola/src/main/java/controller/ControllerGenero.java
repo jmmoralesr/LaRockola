@@ -16,15 +16,15 @@ import to.TOGenero;
 public class ControllerGenero {
     DAOGenero GeneroDAO = new DAOGenero();
     
-    public int insertarUsuario(TOGenero ToGenero){
+    public int insertarGenero(TOGenero ToGenero){
         return GeneroDAO.insertarGenero(ToGenero);
     }
     
-    public boolean actualizarUsuario(TOGenero ToGenero){
+    public boolean actualizarGenero(TOGenero ToGenero){
         return GeneroDAO.actualizarGenero(ToGenero);
     }
     
-    public boolean eliminarUsuario(TOGenero ToGenero){
+    public boolean eliminarGenero(TOGenero ToGenero){
         return GeneroDAO.eliminarGenero(ToGenero);
     }
     

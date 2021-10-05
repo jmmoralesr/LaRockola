@@ -268,13 +268,17 @@ public class ConexionDB {
     
     public ArrayList<String> getColumns(String nombreTabla){
         ArrayList<String> columnas = new ArrayList<>();
-        switch(nombreTabla) {
+        switch(nombreTabla){
             case "usuario":
-                 String [] c = {"idUsuario","usuario","clave","rolUsuario","nombres","email"};
-                 columnas.addAll(Arrays.asList(c));
+                 String [] u = {"idUsuario","usuario","clave","rolUsuario","nombres","email"};
+                 columnas.addAll(Arrays.asList(u));
                  break;
-            }
-        
+            case "genero":
+                 String [] g = {"idGenero","nombreGenero"};
+                 columnas.addAll(Arrays.asList(g));
+                 break;
+             
+        }
         return  columnas;
     }
 }

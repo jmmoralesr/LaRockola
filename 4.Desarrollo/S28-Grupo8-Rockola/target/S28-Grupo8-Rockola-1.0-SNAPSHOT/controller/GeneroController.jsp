@@ -13,13 +13,18 @@ if("listar".equals(opcion)){
     ArrayList<TOGenero> generos = controladorGenero.listarGenero();
     out.print(new Gson().toJson(generos));
 }else if("insertar".equals(opcion)){
-    out.println("Opcion Insertar GeneroController");
+    String datos = request.getParameter("data");
+    TOGenero generoTO = new Gson().fromJson(datos, TOGenero.class);
+    controladorGenero.insertarGenero(generoTO);
 }else if("actualizar".equals(opcion)){
-    out.println("Opcion Actualizar GeneroController");
+    String datos = request.getParameter("data");
+    TOGenero generoTO = new Gson().fromJson(datos, TOGenero.class);
+    controladorGenero.actualizarGenero(generoTO);
 }else if("eliminar".equals(opcion)){
-    out.println("Opcion Eliminar GeneroController");
+    String datos = request.getParameter("data");
+    TOGenero generoTO = new Gson().fromJson(datos, TOGenero.class);
+    controladorGenero.eliminarGenero(generoTO);
 }else{
     out.println("Opcion no disponible GeneroController");
 }
-
 %>

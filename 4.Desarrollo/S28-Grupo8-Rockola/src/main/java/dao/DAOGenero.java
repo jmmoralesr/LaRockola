@@ -20,13 +20,13 @@ import to.TOGenero;
 public class DAOGenero {
     private final ConexionDB con = new ConexionDB();
     private String nombreTabla = "genero";
-    private String [] columnas = {"idGenero","nombreGenero"};
+    private String [] columnas = {"nombreGenero"};
 
     public DAOGenero() {
     }
     
     public int insertarGenero(TOGenero ToGenero){
-        String [] valores = {String.valueOf(ToGenero.getIdGenero()),ToGenero.getNombreGenero()};
+        String [] valores = {ToGenero.getNombreGenero()};
         return con.insertar(nombreTabla, columnas, valores);
     }
     
