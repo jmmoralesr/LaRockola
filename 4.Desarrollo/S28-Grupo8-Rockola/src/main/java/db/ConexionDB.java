@@ -10,6 +10,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -206,16 +208,17 @@ public class ConexionDB {
         }
     }
 
-    public boolean actualizar(String nombreTabla, String[] columnas, String[] valores, int id) {
+    public boolean actualizar(String nombreTabla, String[] valores, int id) {
+        ArrayList<String> columnas = getColumns(nombreTabla);
         StringBuilder query = new StringBuilder("UPDATE ");
         query.append(nombreTabla);
         query.append(" SET ");
-        for (int i = 0; i < columnas.length; i++) {
-            query.append(columnas[i]);
+        for (int i = 0; i < valores.length; i++) {
+            query.append(columnas.get(i));
             query.append(" = '");
             query.append(valores[i]);
             query.append("'");
-            if (i < columnas.length - 1) {
+            if (i < valores.length - 1) {
                 query.append(", ");
             }
         }
@@ -223,19 +226,11 @@ public class ConexionDB {
         query.append(nombreTabla);
         query.append(" = ");
         query.append(id);
-        for (int i = 0; i < valores.length; i++) {
-            query.append("'");
-            query.append(valores[i]);
-            query.append("'");
-            if (i < valores.length - 1) {
-                query.append(",");
-            }
-        }
-        query.append(")");
+        
+        System.out.println("ConexionDB_actualizar: "+ query.toString());
         try {
             stmt = con.createStatement();
-            rs = stmt.executeQuery(query.toString());
-            return true;
+            return stmt.execute(query.toString());
         } catch (SQLException ex) {
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             return false;
@@ -255,10 +250,10 @@ public class ConexionDB {
         query.append(nombreTabla);
         query.append(" = ");
         query.append(id);
+        System.out.println("ConexionDB_borrar: "+ query.toString());
         try {
             stmt = con.createStatement();
-            rs = stmt.executeQuery(query.toString());
-            return true;
+            return stmt.execute(query.toString());
         } catch (SQLException ex) {
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             return false;
@@ -269,5 +264,17 @@ public class ConexionDB {
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
+    }
+    
+    public ArrayList<String> getColumns(String nombreTabla){
+        ArrayList<String> columnas = new ArrayList<>();
+        switch(nombreTabla) {
+            case "usuario":
+                 String [] c = {"idUsuario","usuario","clave","rolUsuario","nombres","email"};
+                 columnas.addAll(Arrays.asList(c));
+                 break;
+            }
+        
+        return  columnas;
     }
 }

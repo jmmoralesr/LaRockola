@@ -13,13 +13,18 @@ if("listar".equals(opcion)){
     ArrayList<TOUsuario> usuarios = controladorUsuarios.listarUsuarios(); 
     out.print(new Gson().toJson(usuarios));
 }else if("insertar".equals(opcion)){
-    String usuario = request.getParameter("data");
-    TOUsuario usuarioTO = new Gson().fromJson(usuario, TOUsuario.class);
+    String datos = request.getParameter("data");
+    TOUsuario usuarioTO = new Gson().fromJson(datos, TOUsuario.class);
     controladorUsuarios.insertarUsuario(usuarioTO);
 }else if("actualizar".equals(opcion)){
-    out.println("Opcion Actualizar UsuariosController");
+    String datos = request.getParameter("data");
+    TOUsuario usuarioTO = new Gson().fromJson(datos, TOUsuario.class);
+    controladorUsuarios.actualizarUsuario(usuarioTO);
 }else if("eliminar".equals(opcion)){
-    out.println("Opcion Eliminar UsuariosController");
+    String datos = request.getParameter("data");
+    System.out.println("Recepcion_UsuarioController.jsp?opcion=eliminar " + datos);
+    TOUsuario usuarioTO = new Gson().fromJson(datos, TOUsuario.class);
+    controladorUsuarios.eliminarUsuario(usuarioTO);
 }else if("login".equals(opcion)){
     String datos = request.getParameter("datos");
     TOUsuario usuarioTO = new Gson().fromJson(datos, TOUsuario.class);

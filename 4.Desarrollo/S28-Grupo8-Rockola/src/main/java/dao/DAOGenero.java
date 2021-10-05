@@ -32,7 +32,7 @@ public class DAOGenero {
     
     public boolean actualizarGenero(TOGenero ToGenero){
         String [] valores = {String.valueOf(ToGenero.getIdGenero()),ToGenero.getNombreGenero()};
-        return con.actualizar(nombreTabla, columnas, valores, ToGenero.getIdGenero());
+        return con.actualizar(nombreTabla, valores, ToGenero.getIdGenero());
     }
     
     public boolean eliminarGenero(TOGenero ToGenero){

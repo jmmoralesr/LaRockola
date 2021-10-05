@@ -33,7 +33,7 @@ public class DAOCanciones {
     
     public boolean actualizarCanciones(TOCanciones ToCanciones){
         String [] valores = {String.valueOf(ToCanciones.getIdCanciones()),ToCanciones.getTituloCanciones(),ToCanciones.getAgnoCanciones(),String.valueOf(ToCanciones.getIdArtistas()),String.valueOf(ToCanciones.getIdAlbum()),String.valueOf(ToCanciones.getIdGenero())};
-        return con.actualizar(nombreTabla, columnas, valores, ToCanciones.getIdCanciones());
+        return con.actualizar(nombreTabla, valores, ToCanciones.getIdCanciones());
     }
     
     public boolean eliminarCanciones(TOCanciones ToCanciones){

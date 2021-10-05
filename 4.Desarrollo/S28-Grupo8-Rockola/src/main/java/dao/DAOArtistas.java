@@ -32,7 +32,7 @@ public class DAOArtistas {
     
     public boolean actualizarArtistas(TOArtistas ToArtistas){
         String [] valores = {String.valueOf(ToArtistas.getIdArtistas()),ToArtistas.getNombreArtistas(),ToArtistas.getNacionalidadArtistas()};
-        return con.actualizar(nombreTabla, columnas, valores, ToArtistas.getIdArtistas());
+        return con.actualizar(nombreTabla, valores, ToArtistas.getIdArtistas());
     }
     
     public boolean eliminarArtistas(TOArtistas ToArtistas){

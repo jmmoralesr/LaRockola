@@ -33,7 +33,7 @@ public class DAOListaReproduccion {
     
     public boolean actualizarListaReproduccion(TOListaReproduccion ToListaReproduccion){
         String [] valores = {String.valueOf(ToListaReproduccion.getIdListaReproduccion()),String.valueOf(ToListaReproduccion.getIdUsuario()),String.valueOf(ToListaReproduccion.getIdCancionesLista()),String.valueOf(ToListaReproduccion.getFechaUltimaReproduccion())};
-        return con.actualizar(nombreTabla, columnas, valores, ToListaReproduccion.getIdListaReproduccion());
+        return con.actualizar(nombreTabla, valores, ToListaReproduccion.getIdListaReproduccion());
     }
     
     public boolean eliminarListaReproduccion(TOListaReproduccion ToListaReproduccion){

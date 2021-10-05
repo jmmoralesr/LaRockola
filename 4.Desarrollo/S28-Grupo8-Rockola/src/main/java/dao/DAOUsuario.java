@@ -32,7 +32,7 @@ public class DAOUsuario {
     
     public boolean actualizarUsuario(TOUsuario ToUsuario){
         String [] valores = {String.valueOf(ToUsuario.getIdUsuario()),ToUsuario.getUsuario(),ToUsuario.getClave(), ToUsuario.getRolUsuario(),ToUsuario.getNombres(),ToUsuario.getEmail()};
-        return con.actualizar(nombreTabla, columnas, valores, ToUsuario.getIdUsuario());
+        return con.actualizar(nombreTabla, valores, ToUsuario.getIdUsuario());
     }
     
     public boolean eliminarUsuario(TOUsuario ToUsuario){

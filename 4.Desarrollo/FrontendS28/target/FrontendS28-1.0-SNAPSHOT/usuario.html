@@ -161,9 +161,9 @@
                                             <div class="form-group col-md-4">
                                                 <label>Rol</label>
                                                 <select class="form-control" ng-model="tc.usuarioform.rolUsuario">
-                                                    <option value="Administrador">Administrador</option>
-                                                    <option value="Colaborador">Colaborador</option>
-                                                    <option value="Usuario">Usuario</option>
+                                                    <option>Administrador</option>
+                                                    <option>Colaborador</option>
+                                                    <option>Usuario</option>
                                                 </select>
                                             </div>
                                         </div>                                          
@@ -271,17 +271,31 @@
         };
         
         controlador.guardar = function(){
-            var parametros = {opcion: "insertar", data: JSON.stringify(controlador.usuarioform) };
-            alert(JSON.stringify(controlador));
-            $http({
-                method: 'POST',
-                url : 'http://localhost:8080/S28-Grupo8-Rockola/controller/UsuariosController.jsp',
-                params : parametros
-            }).then(function(res){
-                controlador.respuesta = res.data;
-                controlador.listar();
-                controlador.limpiar();
-            });
+            if(controlador.usuarioform.idUsuario === "undefined"){
+                var parametros = {opcion: "insertar", data: JSON.stringify(controlador.usuarioform) };
+                //alert(JSON.stringify(controlador));
+                $http({
+                    method: 'POST',
+                    url : 'http://localhost:8080/S28-Grupo8-Rockola/controller/UsuariosController.jsp',
+                    params : parametros
+                }).then(function(res){
+                    controlador.respuesta = res.data;
+                    controlador.listar();
+                    controlador.limpiar();
+                });
+            }else {
+                var parametros = {opcion: "actualizar", data: JSON.stringify(controlador.usuarioform) };
+                $http({
+                    method: 'POST',
+                    url : 'http://localhost:8080/S28-Grupo8-Rockola/controller/UsuariosController.jsp',
+                    params : parametros
+                }).then(function(res){
+                    controlador.respuesta = res.data;
+                    controlador.listar();
+                    controlador.limpiar();
+                });
+            }
+            
         };
         
         controlador.limpiar = function(){
@@ -300,7 +314,27 @@
             }
         };       
         
-        
+        controlador.eliminar = function(id){
+            
+            for ( var i = 0; i < controlador.usuarios.length ; i++ ){
+                if(id == controlador.usuarios[i].idUsuario){
+                    controlador.usuarioform = controlador.usuarios[i];
+                }
+            }
+            
+            var parametros = {opcion: "eliminar", data: JSON.stringify(controlador.usuarioform) };
+            
+            $http({
+                method: 'POST',
+                url : 'http://localhost:8080/S28-Grupo8-Rockola/controller/UsuariosController.jsp',
+                params : parametros
+            }).then(function(res){
+                //controlador.respuesta = res.data;
+                controlador.listar();
+                //controlador.limpiar();
+            });
+                        
+        };
     }
 </script>
 

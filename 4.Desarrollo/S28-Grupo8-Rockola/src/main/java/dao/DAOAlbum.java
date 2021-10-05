@@ -32,7 +32,7 @@ public class DAOAlbum {
     
     public boolean actualizarAlbum(TOAlbum ToAlbum){
         String [] valores = {String.valueOf(ToAlbum.getIdAlbum()),ToAlbum.getNombreAlbum(),ToAlbum.getSelloDisco(), ToAlbum.getAgnoAlbum()};
-        return con.actualizar(nombreTabla, columnas, valores, ToAlbum.getIdAlbum());
+        return con.actualizar(nombreTabla, valores, ToAlbum.getIdAlbum());
     }
     
     public boolean eliminarAlbum(TOAlbum ToAlbum){
