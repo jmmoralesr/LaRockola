@@ -17,15 +17,15 @@ import to.TOArtistas;
 public class ControllerArtistas {
     DAOArtistas ArtistasDAO = new DAOArtistas();
     
-    public int insertarUsuario(TOArtistas ToArtistas){
+    public int insertarArtistas(TOArtistas ToArtistas){
         return ArtistasDAO.insertarArtistas(ToArtistas);
     }
     
-    public boolean actualizarUsuario(TOArtistas ToArtistas){
+    public boolean actualizarArtistas(TOArtistas ToArtistas){
         return ArtistasDAO.actualizarArtistas(ToArtistas);
     }
     
-    public boolean eliminarUsuario(TOArtistas ToArtistas){
+    public boolean eliminarArtistas(TOArtistas ToArtistas){
         return ArtistasDAO.eliminarArtistas(ToArtistas);
     }
     

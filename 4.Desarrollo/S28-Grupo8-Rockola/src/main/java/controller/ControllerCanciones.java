@@ -21,15 +21,15 @@ public class ControllerCanciones {
     
     
     
-    public int insertarUsuario(TOCanciones ToCanciones){
+    public int insertarCanciones(TOCanciones ToCanciones){
         return CancionesDAO.insertarCanciones(ToCanciones);
     }
     
-    public boolean actualizarUsuario(TOCanciones ToCanciones){
+    public boolean actualizarCanciones(TOCanciones ToCanciones){
         return CancionesDAO.actualizarCanciones(ToCanciones);
     }
     
-    public boolean eliminarUsuario(TOCanciones ToCanciones){
+    public boolean eliminarCanciones(TOCanciones ToCanciones){
         return CancionesDAO.eliminarCanciones(ToCanciones);
     }
     

@@ -13,11 +13,17 @@ if("listar".equals(opcion)){
     ArrayList<TOAlbum> albums = controladorAlbums.listarAlbum();
     out.print(new Gson().toJson(albums));
 }else if("insertar".equals(opcion)){
-    out.println("Opcion Insertar AlbumsController");
+    String datos = request.getParameter("data");
+    TOAlbum albumTO = new Gson().fromJson(datos, TOAlbum.class);
+    controladorAlbums.insertarAlbum(albumTO);
 }else if("actualizar".equals(opcion)){
-    out.println("Opcion Actualizar AlbumsController");
+    String datos = request.getParameter("data");
+    TOAlbum albumTO = new Gson().fromJson(datos, TOAlbum.class);
+    controladorAlbums.actualizarAlbum(albumTO);
 }else if("eliminar".equals(opcion)){
-    out.println("Opcion Eliminar AlbumsController");
+    String datos = request.getParameter("data");
+    TOAlbum albumTO = new Gson().fromJson(datos, TOAlbum.class);
+    controladorAlbums.actualizarAlbum(albumTO);
 }else{
     out.println("Opcion no disponible AlbumsController");
 }

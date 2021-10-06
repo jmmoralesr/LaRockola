@@ -238,9 +238,9 @@
         };
         
         controlador.guardar = function(){
-            alert(controlador.generoform.idGenero == undefined);
+            
             if(controlador.generoform.idGenero == undefined || controlador.generoform.idGenero === '0' || controlador.generoform.idGenero === 0){
-                alert(controlador.generoform.idGenero);
+                
                 var parametros = {opcion: "insertar", data: JSON.stringify(controlador.generoform) };
                 //alert(JSON.stringify(controlador));
                 $http({

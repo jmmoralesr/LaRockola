@@ -48,5 +48,11 @@ public class TOArtistas {
         this.nacionalidadArtistas = nacionalidadArtistas;
     }
 
+    @Override
+    public String toString() {
+        return "TOArtistas{" + "idArtistas=" + idArtistas + ", nombreArtistas=" + nombreArtistas + ", nacionalidadArtistas=" + nacionalidadArtistas + '}';
+    }
+
+    
     
 }

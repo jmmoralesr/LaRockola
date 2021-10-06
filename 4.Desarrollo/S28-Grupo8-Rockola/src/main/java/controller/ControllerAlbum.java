@@ -16,15 +16,15 @@ import to.TOAlbum;
 public class ControllerAlbum {
     DAOAlbum albumDAO = new DAOAlbum();
     
-    public int insertarUsuario(TOAlbum ToAlbum){
+    public int insertarAlbum(TOAlbum ToAlbum){
         return albumDAO.insertarAlbum(ToAlbum);
     }
     
-    public boolean actualizarUsuario(TOAlbum ToAlbum){
+    public boolean actualizarAlbum(TOAlbum ToAlbum){
         return albumDAO.actualizarAlbum(ToAlbum);
     }
     
-    public boolean eliminarUsuario(TOAlbum ToAlbum){
+    public boolean eliminarAlbum(TOAlbum ToAlbum){
         return albumDAO.eliminarAlbum(ToAlbum);
     }
     

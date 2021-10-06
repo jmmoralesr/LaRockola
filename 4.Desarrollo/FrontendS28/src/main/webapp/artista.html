@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <!-- Custom Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
 </head>
 
 <body>
@@ -122,7 +122,7 @@
         <!--**********************************
             Content body start
         ***********************************-->
-        <div class="content-body">
+        <div class="content-body" ng-app="artista28" ng-controller="testController as tc">
 
             <div class="row page-titles mx-0">
                 <div class="col p-md-0">
@@ -146,16 +146,16 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-5">
                                                 <label>Nombre</label>
-                                                <input type="text" class="form-control" placeholder="Nombre Artista">
+                                                <input type="text" class="form-control" placeholder="Nombre Artista" ng-model="tc.artistaform.nombreArtistas">
                                             </div>
                                             <div class="form-group col-md-5">
                                                 <label>Nacionalidad</label>
-                                                <input type="text" class="form-control" placeholder="Nacionalidad">
+                                                <input type="text" class="form-control" placeholder="Nacionalidad" ng-model="tc.artistaform.nacionalidadArtistas">
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-dark">Guardar</button>
-                                        <button type="submit" class="btn btn-dark">Limpiar formulario</button>
-                                        <button type="submit" class="btn btn-dark">Listar</button>
+                                        <button type="submit" class="btn btn-dark" ng-click="tc.guardar()">Guardar</button>
+                                        <button type="submit" class="btn btn-dark" ng-click="tc.limpiar()">Limpiar formulario</button>
+                                        <button type="submit" class="btn btn-dark" ng-click="tc.listar()">Listar</button>
                                     </form>
                                 </div>
                             </div>
@@ -164,6 +164,35 @@
                 </div>
             </div>
             <!-- #/ container -->
+            <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Lista de Artistas</h4>
+                                <div class="table-responsive"> 
+                                    <table class="table table-bordered table-striped verticle-middle">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Nombre</th>
+                                                <th scope="col">Nacionalidad</th>
+                                                <th scope="col">Editar</th>
+                                                <th scope="col">Eliminar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="artista in tc.artistas">
+                                                <td>{{artista.nombreArtistas}}</td>
+                                                <td>{{artista.nacionalidadArtistas}}</td>
+                                                <td><span><a href="#" data-toggle="tooltip" data-placement="top" title="Editar" ng-click="tc.seleccionar(artista.idArtistas)"><i class="fa fa-pencil color-muted m-r-5"></i> </a></span>
+                                                </td>
+                                                <td><span><a href="#" data-toggle="tooltip" data-placement="top" title="Eliminar" ng-click="tc.eliminar(artista.idArtistas)"><i class="fa fa-close color-danger"></i></a></span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
         </div>
         <!--**********************************
             Content body end
@@ -196,5 +225,90 @@
     <script src="js/styleSwitcher.js"></script>
 
 </body>
+<script>
+    var app = angular.module('artista28',[]);
+    app.controller('testController',['$http',initController]);
+    function initController($http){
+        var controlador = this;
+        
+        controlador.listar = function(){
+            var parametros = {opcion:"listar"};
+            $http({
+                method: 'POST',
+                url : 'http://localhost:8080/S28-Grupo8-Rockola/controller/ArtistasController.jsp',
+                params : parametros
+            }).then(function(res){
+                controlador.artistas = res.data;
+                
+            });
+        };
+        
+        controlador.guardar = function(){
+            
+            if(controlador.artistaform.idArtistas == undefined || controlador.artistaform.idArtistas === '0' || controlador.artistaform.idArtistas === 0){
+                
+                var parametros = {opcion: "insertar", data: JSON.stringify(controlador.artistaform) };
+                //alert(JSON.stringify(controlador));
+                $http({
+                    method: 'POST',
+                    url : 'http://localhost:8080/S28-Grupo8-Rockola/controller/ArtistasController.jsp',
+                    params : parametros
+                }).then(function(res){
+                    controlador.respuesta = res.data;
+                    controlador.listar();
+                    controlador.limpiar();
+                });
+            }else {
+                var parametros = {opcion: "actualizar", data: JSON.stringify(controlador.artistaform) };
+                
+                $http({
+                    method: 'POST',
+                    url : 'http://localhost:8080/S28-Grupo8-Rockola/controller/ArtistasController.jsp',
+                    params : parametros
+                }).then(function(res){
+                    controlador.respuesta = res.data;
+                    controlador.listar();
+                    controlador.limpiar();
+                });
+            }
+            
+        };
+        
+        controlador.limpiar = function(){
+            controlador.artistaform.nombreArtistas = "";
+            controlador.artistaform.nacionalidadArtistas = "";
+        };
+        
+        controlador.seleccionar = function(id){
+            for ( var i = 0; i < controlador.artistas.length ; i++ ){
+                if(id == controlador.artistas[i].idArtistas){
+                    controlador.artistaform = controlador.artistas[i];
+                }
+            }
+        };       
+        
+        controlador.eliminar = function(id){
+            
+            for ( var i = 0; i < controlador.artistas.length ; i++ ){
+                if(id == controlador.artistas[i].idArtistas){
+                    controlador.artistaform = controlador.artistas[i];
+                }
+            }
+            
+            var parametros = {opcion: "eliminar", data: JSON.stringify(controlador.artistaform) };
+            
+            $http({
+                method: 'POST',
+                url : 'http://localhost:8080/S28-Grupo8-Rockola/controller/ArtistasController.jsp',
+                params : parametros
+            }).then(function(res){
+                //controlador.respuesta = res.data;
+                controlador.listar();
+                //controlador.limpiar();
+            });
+                        
+        };
+    }
+</script>
 
 </html>

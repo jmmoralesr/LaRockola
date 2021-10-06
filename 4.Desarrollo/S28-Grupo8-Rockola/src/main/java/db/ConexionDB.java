@@ -277,6 +277,19 @@ public class ConexionDB {
                  String [] g = {"idGenero","nombreGenero"};
                  columnas.addAll(Arrays.asList(g));
                  break;
+            case "album":
+                 String [] al = {"idAlbum","nombreAlbum","selloDisco","agnoAlbum"};
+                 columnas.addAll(Arrays.asList(al));
+                 break;
+            case "canciones":
+                 String [] ca = {"idCanciones","tituloCanciones","agnoCanciones","idArtistas","nombreArtistas","nacionalidadArtistas",
+                 "idAlbum","nombreAlbum","selloDisco","agnoAlbum","idGenero","nombreGenero"};
+                 columnas.addAll(Arrays.asList(ca));
+                 break;
+            case "artistas":
+                 String [] ar = {"idArtistas","nombreArtistas","nacionalidadArtistas"};
+                 columnas.addAll(Arrays.asList(ar));
+                 break;
              
         }
         return  columnas;

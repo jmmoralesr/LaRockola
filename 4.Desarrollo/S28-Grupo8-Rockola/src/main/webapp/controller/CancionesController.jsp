@@ -14,11 +14,11 @@ if("listar".equals(opcion)){
     ArrayList<TOCanciones> canciones = controladorCanciones.listarCanciones(); 
     out.print(new Gson().toJson(canciones));
 }else if("insertar".equals(opcion)){
-    out.println("Opcion Insertar CancionesController");
+    
 }else if("actualizar".equals(opcion)){
-    out.println("Opcion Actualizar CancionesController");
+    
 }else if("eliminar".equals(opcion)){
-    out.println("Opcion Eliminar CancionesController");
+    
 }else{
     out.println("Opcion no disponible CancionesController");
 }
