@@ -34,10 +34,12 @@ public class ConexionDB {
     public ConexionDB() {
         DB_driver = "com.mysql.cj.jdbc.Driver";
         host = "localhost:3306";
-        db = "mydb";
+        db = "c3s28grupo8";
         url = "jdbc:mysql://" + host + "/" + db;
-        username = "root";
-        password = "admin";
+        //username = "root"; // username BD CarlosBurgs
+        //password = "admin"; // password BD CarlosBurgos
+        username = "c3s28grupo8"; // username BD Servidor UIS
+        password = "hW5ynlLf"; // password BD Servidor UIS
 
         try { // Asignacion del driver
             Class.forName(DB_driver);
@@ -110,17 +112,21 @@ public class ConexionDB {
 
     public ResultSet consultarTabla(String nombreTabla) {
         String query = "SELECT * FROM " + nombreTabla;
+        System.out.println("ConexionDB_consultarTabla: "+ query);
         try {
             stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             rs = stmt.executeQuery(query);
             return rs;
         } catch (SQLException ex) {
+            System.out.println("ConexionDB_consultarTabla exception: "+ex.getMessage());
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         } catch (RuntimeException ex) {
+            System.out.println("ConexionDB_consultarTabla exception: "+ex.getMessage());
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         } catch (Exception ex) {
+            System.out.println("ConexionDB_consultarTabla exception: "+ex.getMessage());
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
@@ -232,12 +238,15 @@ public class ConexionDB {
             stmt = con.createStatement();
             return stmt.execute(query.toString());
         } catch (SQLException ex) {
+            System.out.println("Error en ConexionDB.actualizar: " + ex.getMessage());
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         } catch (RuntimeException ex) {
+            System.out.println("Error en ConexionDB.actualizar: " + ex.getMessage());
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         } catch (Exception ex) {
+            System.out.println("Error en ConexionDB.actualizar: " + ex.getMessage());
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
